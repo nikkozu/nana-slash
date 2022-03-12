@@ -1,0 +1,18 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName("dm")
+    .setDescription("DM-ing you with message"),
+  // Execute command
+  async execute(client, interaction) {
+    const member = interaction.member;
+    await interaction.reply("Successfully DM you with some message!");
+    // Send message to member DM
+    await member.send("Hello 👋");
+
+    // Delete message on DM by Message ID
+    // let memberDM = await member.createDM(true);
+    // memberDM.messages.fetch().then((m) => m.delete());
+  },
+};
